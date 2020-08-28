@@ -233,6 +233,10 @@ public:
 
         void EnterCombat(Unit*  /*who*/)
         {
+            if (InstanceScript* _instance = me->GetInstanceScript())
+                if (_instance->GetData(TYPE_LEVIATHAN) != DONE)
+                    EnterEvadeMode();
+
             me->setActive(true);
 
             std::list<Creature*> icl;

@@ -155,6 +155,9 @@ public:
 
         void EnterCombat(Unit*  /*pWho*/)
         {
+            if (pInstance && pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+
             me->setActive(true);
             me->SetInCombatWithZone();
 

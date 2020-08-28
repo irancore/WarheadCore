@@ -177,6 +177,9 @@ public:
             if (m_pInstance)
                 m_pInstance->SetData(TYPE_AURIAYA, IN_PROGRESS);
 
+            if (m_pInstance && m_pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+
             events.ScheduleEvent(EVENT_TERRIFYING_SCREECH, 35000);
             events.ScheduleEvent(EVENT_SONIC_SCREECH, 45000);
             events.ScheduleEvent(EVENT_GUARDIAN_SWARM, 70000);

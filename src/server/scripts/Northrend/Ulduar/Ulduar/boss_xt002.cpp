@@ -199,6 +199,9 @@ public:
 
         void EnterCombat(Unit*)
         {
+            if (m_pInstance && m_pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+
             me->SetUInt32Value(UNIT_NPC_EMOTESTATE, EMOTE_ONESHOT_NONE);
             events.ScheduleEvent(EVENT_ENRAGE, 600000, 0, 0);
             events.ScheduleEvent(EVENT_CHECK_ROOM, 5000, 0, 0);

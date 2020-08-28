@@ -235,6 +235,9 @@ public:
         {
             if (pInstance)
                 pInstance->SetData(TYPE_ASSEMBLY, IN_PROGRESS);
+
+            if (pInstance && pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
             
             me->setActive(true);
             me->SetInCombatWithZone();

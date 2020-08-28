@@ -342,6 +342,12 @@ public:
         uint8 _currentIllusion;
         bool _isIllusionReversed;
 
+        void EnterCombat(Unit* /*who*/)
+        {
+            if (m_pInstance && m_pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+        }
+
         void AttackStart(Unit*) { }
         void MoveInLineOfSight(Unit*) { }
 

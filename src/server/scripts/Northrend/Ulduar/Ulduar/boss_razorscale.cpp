@@ -173,8 +173,11 @@ public:
                 me->GetMotionMaster()->MoveChase(who);
         }
 
-        void EnterCombat(Unit*  /*who*/)
+        void EnterCombat(Unit* /*who*/)
         {
+            if (pInstance && pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+            
             me->SetInCombatWithZone();
             events.Reset();
             events.ScheduleEvent(EVENT_COMMANDER_SAY_AGGRO, 5000);
@@ -605,7 +608,7 @@ class npc_ulduar_expedition_commander : public CreatureScript
             if (!instance)
                 return true;
 
-            if (instance->GetData(TYPE_RAZORSCALE) == DONE)
+            if (instance->GetData(TYPE_RAZORSCALE) == DONE || instance->GetData(TYPE_LEVIATHAN) != DONE)
                 return true;
 
             Creature* razorscale = ObjectAccessor::GetCreature(*creature, instance->GetData64(TYPE_RAZORSCALE));

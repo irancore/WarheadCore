@@ -520,6 +520,9 @@ public:
 
         void EnterCombat(Unit*)
         {
+            if (m_pInstance && m_pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+
             if (m_pInstance && !_encounterFinished)
                 m_pInstance->SetData(TYPE_THORIM, IN_PROGRESS);
             me->setActive(true);

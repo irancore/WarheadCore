@@ -491,6 +491,9 @@ public:
 
         void EnterCombat(Unit*)
         {
+            if (m_pInstance && m_pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+
             me->setActive(true);
             me->SetInCombatWithZone();
             me->CastSpell(me, SPELL_TOUCH_OF_EONAR, true);

@@ -250,6 +250,10 @@ public:
                 EnterEvadeMode();
                 return;
             }
+
+            if (pInstance && pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+
             me->setActive(true);
             me->CastSpell(me, SPELL_BITING_COLD_BOSS_AURA, true);
             SmallIcicles(true);

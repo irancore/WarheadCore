@@ -363,6 +363,9 @@ public:
 
         void EnterCombat(Unit*  /*who*/)
         {
+            if (pInstance && pInstance->GetData(TYPE_LEVIATHAN) != DONE)
+                EnterEvadeMode();
+
             me->setActive(true);
             DoZoneInCombat();
             me->RemoveAllAuras();
